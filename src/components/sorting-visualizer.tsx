@@ -22,6 +22,7 @@ export function SortingVisualizerComponent() {
 
   useEffect(() => {
     resetArray()
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)()
     return () => {
       if (audioContextRef.current) {
@@ -178,7 +179,7 @@ export function SortingVisualizerComponent() {
 
   const insertionSort = async (arr: number[]) => {
     for (let i = 1; i < arr.length && sortingRef.current; i++) {
-      let key = arr[i]
+      const key = arr[i]
       let j = i - 1
 
       while (j >= 0 && arr[j] > key && sortingRef.current) {
